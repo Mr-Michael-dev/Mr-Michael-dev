@@ -6,7 +6,6 @@
 ###
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=Mr-Michael-dev&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false" height="150" alt="GitHub stats"  />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Mr-Michael-dev&show_icons=true&&count_private=true&locale=en&layout=compact&card_width=320&langs_count=6&theme=dracula&hide_border=false" height="150" alt="Top languages"  />
 </div>
 
 ###
@@ -64,7 +63,7 @@ I thrive in fast-paced, collaborative environments where I can translate technic
   💳 Engineered payment integration and transaction tracking for seamless data and bill purchases.  
   📈 Implemented secure wallet funding and balance management with optimized backend APIs.
 
-- **Scheduler App** (Node.js, Express, React, MongoDB, DigitalOcean):  
+- **Schedulr App** (Node.js, Express, React, MongoDB, DigitalOcean):  
   🕒 Built schedule handling app for businesses.  
   🔧 Worked as the Backend Engineer.
 
