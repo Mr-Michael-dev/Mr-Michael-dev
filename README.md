@@ -16,8 +16,8 @@ I’m an accomplished Full Stack Developer passionate about building scalable, h
 I specialize in the **MERN stack** and **Flask ecosystem** to develop, deploy, and optimize web and mobile solutions.  
 I thrive in fast-paced, collaborative environments where I can translate technical solutions into meaningful business value.
 
-- 🔭 **Current Focus**: Scalable backend architectures, efficient REST APIs, and system optimization.
-- 💡 **Tech Interests**: EdTech platforms, SaaS tools, backend systems, system design.
+- 🔭 **Current Focus**: Scalable backend architectures, responsive design, efficient REST APIs, and system optimization.
+- 💡 **Tech Interests**: EdTech platforms, HealthTech, SaaS tools, backend systems, system design.
 - 🛠 **Skills**:
   - **Languages**: Python (Flask), JavaScript (Node.js, Express.js, React.js), TypeScript, C
   - **Databases**: MongoDB, MySQL, Redis
