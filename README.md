@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Michael Oyedepo</h1>
-<h2 align="center">Full Stack Software Engineer | Specialized in Scalable Backend Systems</h2>
+<h2 align="center">Full Stack Software Engineer</h2>
 <p align="center">💻 Passionate about building scalable backend systems and modern web apps | MERN | Flask | Team Leader</p>
 
 ###
@@ -12,16 +12,17 @@
 
 ### 👨‍💻 About Me
 
-I’m an accomplished Full Stack Developer passionate about building scalable, high-performance backend systems.  
-I specialize in the **MERN stack** and **Flask ecosystem** to develop, deploy, and optimize web and mobile solutions.  
+I'm a passionate software engineer with over 2 years of experience building scalable web applications.
+I enjoy working with modern technologies and solving complex problems that have a tangible impact.
 I thrive in fast-paced, collaborative environments where I can translate technical solutions into meaningful business value.
+I'm always eager to learn new technologies and share knowledge with the community.
 
-- 🔭 **Current Focus**: Scalable backend architectures, responsive design, efficient REST APIs, and system optimization.
+- 🔭 **Current Focus**: Scalable backend architectures, responsive web app design, efficient REST APIs, and system optimization.
 - 💡 **Tech Interests**: EdTech platforms, HealthTech, SaaS tools, backend systems, system design.
 - 🛠 **Skills**:
   - **Languages**: Python (Flask), JavaScript (Node.js, Express.js, React.js), TypeScript, C
   - **Databases**: MongoDB, MySQL, Redis
-  - **Tools**: Git, GitHub, Github Actions, Nginx, Linux CLI, Shell scripting
+  - **Tools**: Git, GitHub, GitHub Actions, Nginx, Linux CLI, Shell scripting
   - **DevOps**: System administration, deployment, and performance tuning
 
 ###
