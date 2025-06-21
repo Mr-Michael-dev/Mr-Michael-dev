@@ -33,7 +33,7 @@ export function ProjectsSection() {
       demo: "#",
     },
     {
-      title: "Prinf",
+      title: "Printf",
       description: "A custom printf function in C that replicates the standard printf functionality, supporting various format specifiers and flags. Designed to enhance understanding of variadic functions and string formatting in C.",
       tech: ["C", "Ubuntu CLI"],
       github: "https://github.com/Mr-Michael-dev/printf",
