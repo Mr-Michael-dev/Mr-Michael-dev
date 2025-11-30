@@ -25,18 +25,18 @@ export function AboutSection() {
 
   return (
     <section className="py-20 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center text-primary">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-center text-primary">
           About Me
         </h2>
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <p className="text-foreground mb-4">
+            <p className="text-base md:text-lg lg:text-xl text-foreground mb-4">
               I'm a software engineer focused on building reliable, scalable web applications and automated workflows that help people and teams work smarter. 
-              With 2+ years of experience, I work across the stack — from backend systems and APIs to clean, intuitive frontend interfaces.
+              With 2+ years of experience, I work across the stack, from backend systems and APIs to clean, intuitive frontend interfaces.
             </p>
 
-            <p className="text-foreground mb-4">
+            <p className="text-base md:text-lg lg:text-xl text-foreground mb-4">
               My strengths include designing secure backend architectures, building React/TypeScript interfaces, and connecting tools through workflow automation. 
               I enjoy turning real problems into solutions that reduce manual work, improve performance, and support business goals.  
               I also share what I learn as a community advocate and mentor, helping others grow in their technical journey.
@@ -44,11 +44,11 @@ export function AboutSection() {
 
             <div className="flex items-center gap-2 text-muted-foreground">
               <MapPin className="w-4 h-4 text-accent" />
-              <span>Port Harcourt, NGN</span>
+              <span className="text-base md:text-lg">Port Harcourt, NGN</span>
             </div>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-primary hover:text-accent transition-all duration-300">
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4 text-primary hover:text-accent transition-all duration-300">
               Skills & Technologies
             </h3>
             <div className="flex flex-wrap gap-2">

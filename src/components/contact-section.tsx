@@ -8,10 +8,10 @@ export function ContactSection() {
   return (
     <section id="contact" className="py-20 px-4 bg-brand-light-gray/50">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-8 text-primary">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary">
           Let's Work Together
         </h2>
-        <p className="text-lg text-foreground mb-8 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl lg:text-2xl text-foreground mb-8 max-w-2xl mx-auto">
           I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to
           say hi, feel free to reach out!
         </p>
