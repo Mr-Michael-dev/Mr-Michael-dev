@@ -32,14 +32,14 @@ export function AboutSection() {
         </h2>
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <p className="text-muted-foreground mb-4 hover:text-foreground transition-colors duration-300">
+            <p className="text-foreground mb-4">
               I'm a passionate software engineer with over 2 years of experience building scalable web applications. 
               I enjoy working with modern technologies and solving complex problems that have a tangible impact.
             </p>
-            <p className="text-muted-foreground mb-4 hover:text-foreground transition-colors duration-300">
+            <p className="text-foreground mb-4">
               My expertise spans across frontend and backend development, with a strong focus on building scalable backend systemsReact. I thrive in fast-paced, collaborative environments where I can translate technical solutions into meaningful business value. I'm always eager to learn new technologies and share knowledge with the community.
             </p>
-            <div className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <div className="flex items-center gap-2 text-muted-foreground">
               <MapPin className="w-4 h-4 text-accent" />
               <span>Port Harcourt, NGN</span>
             </div>

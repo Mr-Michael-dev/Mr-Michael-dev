@@ -59,7 +59,7 @@ export function ExperienceSection() {
               <CardContent>
                 <ul className="list-disc pl-4 space-y-2">
                   {job.description.map((item, i) => (
-                    <li key={i} className="text-muted-foreground hover:text-foreground transition-colors duration-300">
+                    <li key={i} className="text-foreground">
                       {item}
                     </li>
                   ))}

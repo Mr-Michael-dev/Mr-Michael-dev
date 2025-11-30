@@ -24,7 +24,7 @@ export function HeroSection() {
         <p className="text-xl md:text-2xl mb-6 text-accent font-semibold animate-slide-in-right animation-delay-500">
           Full Stack Software Engineer
         </p>
-        <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in animation-delay-700">
+        <p className="text-lg text-foreground mb-8 max-w-2xl mx-auto animate-fade-in animation-delay-700">
           Passionate about creating scalable web applications and solving complex problems. 2+ years of experience in
           modern web technologies and cloud platforms.
         </p>

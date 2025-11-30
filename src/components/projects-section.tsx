@@ -52,11 +52,11 @@ export function ProjectsSection() {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="flex flex-col border-2 border-brand-cool-gray bg-gradient-to-br from-brand-light-gray/50 to-white p-6 rounded-lg hover:shadow-2xl hover:-translate-y-3 hover:border-brand-amber transition-all duration-700 group"
+              className="flex flex-col hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border-l-4 border-l-transparent hover:border-l-accent"
             >
-              <div className="flex flex-col h-full">
+              <div className="flex flex-col h-full p-6">
                 <CardHeader className="p-0 mb-4">
-                  <CardTitle className="flex items-center justify-between text-primary group-hover:text-accent transition-all duration-300">
+                  <CardTitle className="flex items-center justify-between text-primary hover:text-accent transition-all duration-300">
                     {project.title}
                     <div className="flex gap-2">
                       <Button
@@ -83,7 +83,7 @@ export function ProjectsSection() {
                       </Button>
                     </div>
                   </CardTitle>
-                  <CardDescription className="group-hover:text-muted-foreground transition-colors duration-300">
+                  <CardDescription className="text-foreground">
                     {project.description}
                   </CardDescription>
                 </CardHeader>

@@ -11,7 +11,7 @@ export function ContactSection() {
         <h2 className="text-3xl font-bold mb-8 text-primary">
           Let's Work Together
         </h2>
-        <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto hover:text-foreground transition-colors duration-300">
+        <p className="text-lg text-foreground mb-8 max-w-2xl mx-auto">
           I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to
           say hi, feel free to reach out!
         </p>
