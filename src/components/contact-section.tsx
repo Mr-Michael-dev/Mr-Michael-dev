@@ -6,9 +6,9 @@ import Link from "next/link"
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-20 px-4 bg-muted/30">
+    <section id="contact" className="py-20 px-4 bg-brand-light-gray/50">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-8 bg-gradient-purple-pink bg-clip-text text-transparent">
+        <h2 className="text-3xl font-bold mb-8 text-primary">
           Let's Work Together
         </h2>
         <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto hover:text-foreground transition-colors duration-300">
@@ -19,7 +19,7 @@ export function ContactSection() {
           <Button
             size="lg"
             asChild
-            className="bg-gradient-purple-pink hover:opacity-90 hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
+            className="hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
           >
             <Link href="mailto:michael.oyedepo@gmail.com" target="_blank">
               <Mail className="w-4 h-4 mr-2" />
@@ -27,10 +27,10 @@ export function ContactSection() {
             </Link>
           </Button>
           <Button
-            variant="outline"
+            variant="secondary"
             size="lg"
             asChild
-            className="border-gradient-start text-gradient-end hover:bg-gradient-purple-pink hover:text-white hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
+            className="hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
           >
             <Link href="https://linkedin.com/in/michael-oyedepo" target="_blank">
               <Linkedin className="w-4 h-4 mr-2" />

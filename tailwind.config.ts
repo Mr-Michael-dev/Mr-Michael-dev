@@ -53,13 +53,16 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Custom gradient colors
-        "gradient-start": "#8B5CF6", // Purple
-        "gradient-end": "#EC4899", // Pink
+        // Brand kit colors
+        "brand-deep-blue": "#0A2540",
+        "brand-amber": "#F6A32F",
+        "brand-light-gray": "#F5F7FA",
+        "brand-cool-gray": "#94A3B8",
+        "brand-dark-slate": "#1E293B",
       },
       backgroundImage: {
-        "gradient-purple-pink": "linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)",
-        "gradient-purple-pink-light": "linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)",
+        "gradient-brand": "linear-gradient(135deg, #0A2540 0%, #F6A32F 100%)",
+        "gradient-brand-subtle": "linear-gradient(135deg, rgba(10, 37, 64, 0.05) 0%, rgba(246, 163, 47, 0.05) 100%)",
       },
       borderRadius: {
         lg: "var(--radius)",

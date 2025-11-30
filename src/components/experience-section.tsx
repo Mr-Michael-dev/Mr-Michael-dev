@@ -29,29 +29,29 @@ export function ExperienceSection() {
   
 
   return (
-    <section className="py-20 px-4 bg-muted/30">
+    <section className="py-20 px-4 bg-brand-light-gray/50">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center bg-gradient-purple-pink bg-clip-text text-transparent">
+        <h2 className="text-3xl font-bold mb-12 text-center text-primary">
           Experience
         </h2>
         <div className="space-y-8">
           {experience.map((job, index) => (
             <Card
               key={index}
-              className="hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border-l-4 border-l-transparent hover:border-l-gradient-start"
+              className="hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border-l-4 border-l-transparent hover:border-l-accent"
             >
               <CardHeader>
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                   <div>
-                    <CardTitle className="text-xl hover:bg-gradient-purple-pink hover:bg-clip-text hover:text-transparent transition-all duration-300">
+                    <CardTitle className="text-xl text-primary hover:text-accent transition-all duration-300">
                       {job.title}
                     </CardTitle>
-                    <CardDescription className="text-lg font-medium bg-gradient-purple-pink-light bg-clip-text text-transparent">
+                    <CardDescription className="text-lg font-medium text-accent">
                       {job.company}
                     </CardDescription>
                   </div>
                   <div className="flex items-center gap-2 text-muted-foreground mt-2 md:mt-0">
-                    <Calendar className="w-4 h-4 text-gradient-start" />
+                    <Calendar className="w-4 h-4 text-accent" />
                     <span>{job.period}</span>
                   </div>
                 </div>

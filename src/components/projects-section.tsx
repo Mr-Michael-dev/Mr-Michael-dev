@@ -45,25 +45,25 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center bg-gradient-purple-pink bg-clip-text text-transparent">
+        <h2 className="text-3xl font-bold mb-12 text-center text-primary">
           Featured Projects
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="flex flex-col border-2 border-transparent bg-gradient-to-r from-gradient-start to-gradient-end p-[1px] rounded-lg hover:shadow-2xl hover:-translate-y-3 hover:rotate-1 transition-all duration-700 group"
+              className="flex flex-col border-2 border-brand-cool-gray bg-gradient-to-br from-brand-light-gray/50 to-white p-6 rounded-lg hover:shadow-2xl hover:-translate-y-3 hover:border-brand-amber transition-all duration-700 group"
             >
-              <div className="bg-card rounded-lg p-6 flex flex-col h-full">
+              <div className="flex flex-col h-full">
                 <CardHeader className="p-0 mb-4">
-                  <CardTitle className="flex items-center justify-between text-gradient-start group-hover:bg-gradient-purple-pink group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                  <CardTitle className="flex items-center justify-between text-primary group-hover:text-accent transition-all duration-300">
                     {project.title}
                     <div className="flex gap-2">
                       <Button
                         variant="ghost"
                         size="icon"
                         asChild
-                        className="hover:bg-gradient-purple-pink hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                        className="hover:bg-accent hover:text-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
                       >
                         <Link href={project.github} target="_blank">
                           <Github className="w-4 h-4" />
@@ -74,7 +74,7 @@ export function ProjectsSection() {
                         variant="ghost"
                         size="icon"
                         asChild
-                        className="hover:bg-gradient-purple-pink hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                        className="hover:bg-accent hover:text-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
                       >
                         <Link href={project.demo} target="_blank">
                           <ExternalLink className="w-4 h-4" />
@@ -83,7 +83,7 @@ export function ProjectsSection() {
                       </Button>
                     </div>
                   </CardTitle>
-                  <CardDescription className="group-hover:text-muted-foreground/80 transition-colors duration-300">
+                  <CardDescription className="group-hover:text-muted-foreground transition-colors duration-300">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
@@ -93,7 +93,7 @@ export function ProjectsSection() {
                       <Badge
                         key={tech}
                         variant="outline"
-                        className="border-gradient-start text-gradient-end hover:bg-gradient-purple-pink hover:text-white hover:-translate-y-1 hover:shadow-sm transition-all duration-300"
+                        className="border-brand-cool-gray text-primary hover:bg-accent hover:text-primary hover:-translate-y-1 hover:shadow-sm transition-all duration-300"
                       >
                         {tech}
                       </Badge>
