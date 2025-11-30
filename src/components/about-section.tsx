@@ -33,12 +33,16 @@ export function AboutSection() {
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <p className="text-foreground mb-4">
-              I'm a passionate software engineer with over 2 years of experience building scalable web applications. 
-              I enjoy working with modern technologies and solving complex problems that have a tangible impact.
+              I'm a software engineer focused on building reliable, scalable web applications and automated workflows that help people and teams work smarter. 
+              With 2+ years of experience, I work across the stack — from backend systems and APIs to clean, intuitive frontend interfaces.
             </p>
+
             <p className="text-foreground mb-4">
-              My expertise spans across frontend and backend development, with a strong focus on building scalable backend systemsReact. I thrive in fast-paced, collaborative environments where I can translate technical solutions into meaningful business value. I'm always eager to learn new technologies and share knowledge with the community.
+              My strengths include designing secure backend architectures, building React/TypeScript interfaces, and connecting tools through workflow automation. 
+              I enjoy turning real problems into solutions that reduce manual work, improve performance, and support business goals.  
+              I also share what I learn as a community advocate and mentor, helping others grow in their technical journey.
             </p>
+
             <div className="flex items-center gap-2 text-muted-foreground">
               <MapPin className="w-4 h-4 text-accent" />
               <span>Port Harcourt, NGN</span>

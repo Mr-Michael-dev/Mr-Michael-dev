@@ -22,11 +22,11 @@ export function HeroSection() {
           Michael Oyedepo
         </h1>
         <p className="text-xl md:text-2xl mb-6 text-accent font-semibold animate-slide-in-right animation-delay-500">
-          Full Stack Software Engineer
+          Software Engineer (Full Stack & Automation)
         </p>
-        <p className="text-lg text-foreground mb-8 max-w-2xl mx-auto animate-fade-in animation-delay-700">
-          Passionate about creating scalable web applications and solving complex problems. 2+ years of experience in
-          modern web technologies and cloud platforms.
+        <p className="text-lg text-foreground mb-8 max-w-2xl mx-auto">
+          I help businesses build reliable web applications and automated systems that make work easier.  
+          Full-stack engineer with 2+ years of experience across scalable backends, clean React interfaces, and workflow automation.
         </p>
         <div className="flex flex-wrap justify-center gap-4 mb-8 animate-zoom-in animation-delay-900">
           <Button
