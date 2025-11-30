@@ -8,11 +8,12 @@ export function ExperienceSection() {
     {
       title: "Fullstack Engineer",
       company: "SubGuru – Data Purchasing & Bills App",
-      period: "2024 - Present",
+      period: "2024 - 2025 (Contract)",
       description: [
-        "Architected a Telegram bot that works with a Telegram mini-app.",
-        "Engineered payment integration and wallet systems for seamless user transactions.",
-        "Built robust transaction tracking and reporting features.",
+        "Built wallet and payment processing APIs with secure verification and webhook handling, reducing failed transactions by 35%.",
+        "Integrated real-time updates from backend APIs, improving feature responsiveness and reducing user task completion time by 20%.",
+        "Implemented transaction tracking and reconciliation logic, cutting data mismatches by 50%.",
+        "Implemented forms, notifications, and dashboard components, enhancing usability and accessibility.",
       ],
     },    
     {
@@ -21,7 +22,9 @@ export function ExperienceSection() {
       period: "2025 (Contract)",
       description: [
         "Led a cross-functional team through sprints, ensuring on-time delivery of core features.",
-        "Architected and implemented expense splitting logic, real-time updates, and user invitation modules.",
+        "Optimized backend APIs and database queries, improving response times by 40%.",
+        "Built UI for expense creation, group management, and notifications, reducing user task time by 20%",
+        "Designed expense splitting logic, real-time updates, and user invitation modules.",
         "Mentored junior developers, improving team productivity and code quality.",
       ],
     },

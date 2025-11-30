@@ -6,14 +6,11 @@ import { MapPin } from "lucide-react"
 export function AboutSection() {
   const skills = [
     "Linux",
-    "C",
     "TypeScript",
     "Express.js",
     "React",
     "Next.js",
     "Node.js",
-    "Python",
-    "Flask",
     "SQL",
     "MongoDB",
     "Redis",
@@ -22,6 +19,8 @@ export function AboutSection() {
     "DigitalOcean",
     "Git",
     "Tailwind CSS",
+    "n8n",
+    "AppScripts"
   ]
 
   return (

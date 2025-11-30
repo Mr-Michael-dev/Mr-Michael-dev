@@ -9,7 +9,7 @@ export function HeroSection() {
   return (
     <section className="relative py-20 px-4 bg-gradient-brand-subtle overflow-hidden">
       <div className="max-w-4xl mx-auto text-center">
-        <div className="mb-8 animate-bounce-in">
+        <div className="mb-4 animate-bounce-in">
           <Image
             src="/michael_oyedepo.png"
             alt="Profile"
@@ -18,10 +18,10 @@ export function HeroSection() {
             className="rounded-full mx-auto mb-6 border-4 border-primary shadow-lg hover:shadow-2xl hover:border-accent transition-all duration-500"
           />
         </div>
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-primary animate-slide-in-left animation-delay-300">
+        <h1 className="text-4xl md:text-6xl font-bold mb-2 text-primary animate-slide-in-left animation-delay-300">
           Michael Oyedepo
         </h1>
-        <p className="text-xl md:text-2xl mb-6 text-accent font-semibold animate-slide-in-right animation-delay-500">
+        <p className="text-xl md:text-2xl mb-4 text-accent font-semibold animate-slide-in-right animation-delay-500">
           Software Engineer (Full Stack & Automation)
         </p>
         <p className="text-lg text-foreground mb-8 max-w-2xl mx-auto">
