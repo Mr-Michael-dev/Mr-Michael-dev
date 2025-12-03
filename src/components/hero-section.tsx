@@ -9,7 +9,7 @@ export function HeroSection() {
   return (
     <section className="relative py-20 md:min-h-screen md:flex md:items-center md:justify-center px-4 bg-gradient-brand-subtle overflow-hidden">
       <div className="max-w-5xl w-full text-center">
-        <div className="mb-4 md:mb-8 animate-bounce-in">
+        <div className="mb-4 md:mb-8 animate-bounce-in ">
           <Image
             src="/michael_oyedepo.png"
             alt="Profile"
@@ -26,7 +26,7 @@ export function HeroSection() {
         </p>
         <p className="text-base md:text-lg lg:text-2xl text-foreground mb-6 md:mb-8 max-w-3xl mx-auto">
           I help businesses build reliable web applications and automated systems that make work easier.  
-          Full-stack engineer with 2+ years of experience across scalable backends, clean React interfaces, and workflow automation.
+          Full-stack engineer with experience across scalable backends, clean React interfaces, and workflow automation.
         </p>
         <div className="flex flex-wrap justify-center gap-4 mb-8 animate-zoom-in animation-delay-900">
           <Button

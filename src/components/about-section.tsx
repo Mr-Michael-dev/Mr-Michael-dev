@@ -33,7 +33,7 @@ export function AboutSection() {
           <div>
             <p className="text-base md:text-lg lg:text-xl text-foreground mb-4">
               I'm a software engineer focused on building reliable, scalable web applications and automated workflows that help people and teams work smarter. 
-              With 2+ years of experience, I work across the stack, from backend systems and APIs to clean, intuitive frontend interfaces.
+              I work across the stack, from backend systems and APIs to clean, intuitive frontend interfaces.
             </p>
 
             <p className="text-base md:text-lg lg:text-xl text-foreground mb-4">

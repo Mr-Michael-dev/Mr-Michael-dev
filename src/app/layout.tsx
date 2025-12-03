@@ -3,17 +3,18 @@ import type { Metadata } from "next"
 import { Inter, Nunito } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({ subsets: ["latin"] })
 const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" })
 
 export const metadata: Metadata = {
   title: "Michael Oyedepo - Software Engineer",
-  description: "A software engineer with hands-on experience building backend systems, full-stack applications and automating workflows.",
+  description: "I help businesses build reliable web applications and automated systems that make work easier. Full-stack engineer with experience across scalable backends, clean React interfaces, and workflow automation.",
   openGraph: {
     title: "Michael Oyedepo - Software Engineer",
-    description: "A software engineer with hands-on experience building backend systems, full-stack applications and automating workflows.",
-    url: "https://michaeloyedepo.com",
+    description: "I help businesses build reliable web applications and automated systems that make work easier. Full-stack engineer with experience across scalable backends, clean React interfaces, and workflow automation.",
+    url: "https://michaeloyedepo.dev",
     siteName: "Michael Oyedepo",
     images: [
       {
@@ -29,15 +30,15 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Michael Oyedepo - Software Engineer",
-    description: "A software engineer with hands-on experience building backend systems, full-stack applications and automating workflows.",
-    images: ["https://michaeloyedepo.com/og-image.png", "/michael_oyedepo.png"],
+    description: "I help businesses build reliable web applications and automated systems that make work easier. Full-stack engineer with experience across scalable backends, clean React interfaces, and workflow automation.",
+    images: ["https://michaeloyedepo.dev/og-image.png", "/michael_oyedepo.png"],
     site: "@michaeloyedepo",
     creator: "@michaeloyedepo",
   },
   icons: {
-    icon: "/michael_oyedepo.png",
-    apple: "/michael_oyedepo.png",
-    shortcut: "/michael_oyedepo.png",
+    icon: "/favicon.ico",
+    apple: "/favicon.ico",
+    shortcut: "/favicon.ico",
   },
 }
 
@@ -51,6 +52,7 @@ export default function RootLayout({
       <body className={`${inter.className} ${nunito.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
