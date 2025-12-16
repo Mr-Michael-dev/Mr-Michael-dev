@@ -61,7 +61,7 @@ export function HeroSection() {
             variant="ghost"
             size="icon"
             asChild
-            className="hover:bg-accent hover:text-primary hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
+            className="hover:bg-secondary hover:text-primary hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
           >
             <Link href="https://github.com/Mr-Michael-dev" target="_blank">
               <Github className="w-5 h-5 text-primary" />
@@ -72,7 +72,7 @@ export function HeroSection() {
             variant="ghost"
             size="icon"
             asChild
-            className="hover:bg-accent hover:text-primary hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
+            className="hover:bg-secondary hover:text-primary hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
           >
             <Link href="https://linkedin.com/in/michael-oyedepo" target="_blank">
               <Linkedin className="w-5 h-5 text-primary" />
@@ -83,7 +83,7 @@ export function HeroSection() {
             variant="ghost"
             size="icon"
             asChild
-            className="hover:bg-accent hover:text-primary hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
+            className="hover:bg-secondary hover:text-primary hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
           >
             <Link href="https://twitter.com/michealoyedepo" target="_blank">
               <X className="w-5 h-5 text-primary" />
@@ -94,7 +94,7 @@ export function HeroSection() {
             variant="ghost"
             size="icon"
             asChild
-            className="hover:bg-accent hover:text-primary hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
+            className="hover:bg-secondary hover:text-primary hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
           >
             <Link href="mailto:alex@example.com">
               <Mail className="w-5 h-5 text-primary" />

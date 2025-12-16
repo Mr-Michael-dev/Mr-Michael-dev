@@ -63,7 +63,7 @@ export function ProjectsSection() {
                         variant="ghost"
                         size="icon"
                         asChild
-                        className="hover:bg-accent hover:text-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                        className="hover:bg-secondary hover:text-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
                       >
                         <Link href={project.github} target="_blank">
                           <Github className="w-4 h-4" />
@@ -74,7 +74,7 @@ export function ProjectsSection() {
                         variant="ghost"
                         size="icon"
                         asChild
-                        className="hover:bg-accent hover:text-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                        className="hover:bg-secondary hover:text-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
                       >
                         <Link href={project.demo} target="_blank">
                           <ExternalLink className="w-4 h-4" />
@@ -93,7 +93,7 @@ export function ProjectsSection() {
                       <Badge
                         key={tech}
                         variant="outline"
-                        className="border-brand-cool-gray text-primary hover:bg-accent hover:text-primary hover:-translate-y-1 hover:shadow-sm transition-all duration-300"
+                        className="border-brand-cool-gray text-primary hover:bg-secondary hover:text-primary hover:-translate-y-1 hover:shadow-sm transition-all duration-300"
                       >
                         {tech}
                       </Badge>

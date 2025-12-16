@@ -23,7 +23,7 @@ export function ThemeToggle() {
       variant="outline"
       size="icon"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="fixed top-4 right-4 z-50 rounded-full border-2 border-primary hover:bg-accent hover:text-primary transition-all duration-300"
+      className="fixed top-4 right-4 z-50 rounded-full border-2 border-primary hover:bg-secondary hover:text-primary transition-all duration-300"
       aria-label="Toggle theme"
     >
       {resolvedTheme === "dark" ? (
