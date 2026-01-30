@@ -1,11 +1,27 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { Github, Linkedin, Mail, X, Download } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
 export function HeroSection() {
+  const topSkills = [
+    "TypeScript",
+    "Node.js",
+    "Next.js",
+    "MongoDB",
+    "MySQL",
+    "Redis",
+    "n8n",
+    "Docker",
+    "GitHub Actions",
+    "Linux",
+    "Nginx",
+    "Shell scripting",
+  ]
+
   return (
     <section className="relative py-20 md:min-h-screen md:flex md:items-center md:justify-center px-4 bg-gradient-brand-subtle overflow-hidden">
       <div className="max-w-5xl w-full text-center">
@@ -101,6 +117,22 @@ export function HeroSection() {
               <span className="sr-only">Email</span>
             </Link>
           </Button>
+        </div>
+
+        {/* Skills Section */}
+        <div className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-primary/20">
+          <p className="text-sm md:text-base text-muted-foreground mb-4">Tech Stack & Skills</p>
+          <div className="flex flex-wrap justify-center gap-2 animate-fade-in animation-delay-1300">
+            {topSkills.map((skill) => (
+              <Badge
+                key={skill}
+                variant="secondary"
+                className="hover:-translate-y-1 hover:shadow-md hover:bg-primary hover:text-white transition-all duration-300 cursor-default text-xs md:text-sm"
+              >
+                {skill}
+              </Badge>
+            ))}
+          </div>
         </div>
       </div>
 
