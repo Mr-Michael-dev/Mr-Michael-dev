@@ -13,8 +13,8 @@ export default function Portfolio() {
     <div className="min-h-screen bg-background">
       <ThemeToggle />
       <HeroSection />
-      <AboutSection />
-      <ExperienceSection />
+      {/* <AboutSection /> */}
+      {/* <ExperienceSection /> */}
       <ProjectsSection />
       <ContactSection />
       <Footer />
