@@ -29,7 +29,7 @@ export function AboutSection() {
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-center text-primary">
           About Me
         </h2>
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className=" items-center">
           <div>
             <p className="text-base md:text-lg lg:text-xl text-foreground mb-4">
               I'm a software engineer focused on building reliable, scalable web applications and automated workflows that help people and teams work smarter. 
@@ -42,12 +42,12 @@ export function AboutSection() {
               I also share what I learn as a community advocate and mentor, helping others grow in their technical journey.
             </p>
 
-            <div className="flex items-center gap-2 text-muted-foreground">
+            {/* <div className="flex items-center gap-2 text-muted-foreground">
               <MapPin className="w-4 h-4 text-accent" />
               <span className="text-base md:text-lg">Port Harcourt, NGN</span>
-            </div>
+            </div> */}
           </div>
-          <div>
+          {/* <div>
             <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4 text-primary hover:text-accent transition-all duration-300">
               Skills & Technologies
             </h3>
@@ -62,7 +62,7 @@ export function AboutSection() {
                 </Badge>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
