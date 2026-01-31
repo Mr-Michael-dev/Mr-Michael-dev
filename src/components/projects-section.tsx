@@ -39,7 +39,7 @@ export function ProjectsSection() {
   
 
   return (
-    <section id="projects" className="py-20 px-4">
+    <section id="projects" className="py-20 px-4  bg-brand-light-gray/50">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">
