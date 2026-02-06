@@ -1,0 +1,379 @@
+{
+  "name": "auto resume generation",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            },
+            {}
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1bEMmxVwdmgllfWXUoCgeLUf8fz66aZuJmx5wREdbqzQ",
+          "mode": "list",
+          "cachedResultName": "Job Applications Tracker (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1bEMmxVwdmgllfWXUoCgeLUf8fz66aZuJmx5wREdbqzQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1170653430,
+          "mode": "list",
+          "cachedResultName": "Form responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1bEMmxVwdmgllfWXUoCgeLUf8fz66aZuJmx5wREdbqzQ/edit#gid=1170653430"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7b8f2b5f-457c-4c4e-87bf-6c84aab88532",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "Y8RBuaHWCRRbqouE",
+          "name": "Google Sheets Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are an expert CV writer and career strategist.\n\nYou will receive:\n- The user's current CV: extract from the doc tools\n- Job Title: {{ $json.Position }}\n- Company Name: {{ $json[\"Company Name\"] }}\n- Job Description: {{ $json.Description }}\n- Job Requirements: {{ $json.Requirements }}\n\nTASK:\n1. Analyze the job title, company, job description and requirements.\n2. Rewrite and tailor the user's CV to perfectly match the role.\n3. Keep the structure professional and ATS-friendly.\n4. Maintain truthfulness—do not add fake skills or experience.\n5. Rewrite in clear, concise, modern CV tone.\n6. Output ONLY the new tailored CV text — no explanations.\n\nFORMAT:\nFollow the format of the user cv and ensure to include\n- Professional Summary (customized to the job)\n- Key Skills (aligned with requirements)\n- Work Experience (rewritten to highlight the most relevant achievements)\n- Education\n- Tools, Technologies & Certifications\n- Additional Sections only if relevant\n\nIMPORTANT:\n- Do NOT output placeholders or commentary.\n- Only output the final CV.\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "b85789c8-e4c3-4a43-81a1-7521ab8f2ff4",
+      "name": "Generate new resume",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "0WdjwurDcBvAsuaS",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "https://docs.google.com/document/d/1g3ae_H7kr9wuQT-INwCmlGWLP3d6FDAETniVlcK8hHA/edit?usp=sharing"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        296,
+        224
+      ],
+      "id": "5ac659d3-8b36-4ee7-ba18-a516cbec759a",
+      "name": "Get CV Template",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "cBFvaLxlOWnmMnbe",
+          "name": "Google Docs Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "folderId": "1X20A1o5_Bu0yxOE1UQ9hUxNuQRr-Mwx4",
+        "title": "=Resume for  {{ $('Google Sheets Trigger').item.json[\"Company Name\"] }} - {{ $('Google Sheets Trigger').item.json.Position }}"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        576,
+        0
+      ],
+      "id": "e94ac8ba-fdc6-41a9-bb7c-2ed785cc7eba",
+      "name": "Create new CV Document",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "cBFvaLxlOWnmMnbe",
+          "name": "Google Docs Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "insert",
+              "text": "={{ $('Generate new resume').item.json.content.parts[0].text }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        800,
+        0
+      ],
+      "id": "7351a5c8-0f0b-415a-9f6b-488def3ecc32",
+      "name": "Update CV From Model",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "cBFvaLxlOWnmMnbe",
+          "name": "Google Docs Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are an expert cover letter writer and email automation assistant.\n\nYour task:\n1. Draft a professional cover letter tailored to the job information provided.\n2. Send an email using the Gmail tool enabled in this node.\n3. Use exactly ONE tool call.\n4. The cover letter should be based on the resume text provided below.\n\nResume Text:\n{{ $('Generate new resume').item.json.content.parts[0].text }}\n\nJob Inputs:\nJob Title: {{ $('Google Sheets Trigger').item.json.Position }}\nCompany: {{ $('Google Sheets Trigger').item.json[\"Company Name\"] }}\nJob Description: {{ $('Google Sheets Trigger').item.json.Description }}\nJob Requirements: {{ $('Google Sheets Trigger').item.json.Requirements }}\n\nResume Document ID (Google Docs): {{ $json.documentId }}\n\nInstructions:\n- Write a concise, compelling, job-specific cover letter.\n- Highlight only relevant and truthful skills and experience.\n- Maintain a professional, confident, human tone.\n- Limit the cover letter to 3–4 short paragraphs.\n- Do not add fake experience.\n- After writing the cover letter, call the Gmail tool ONCE.\n\nThe email must follow this structure:\n{\n  \"subject\": \"Application for {{ $('Google Sheets Trigger').item.json.Position }} at {{ $('Google Sheets Trigger').item.json['Company Name'] }}\",\n  \"body\": \"<INSERT THE COVER LETTER HERE>\\n\\nResume: https://docs.google.com/document/d/{{ $json.documentId }}/view\"\n}\n\nImportant:\n- No normal text or explanation outside the tool call.\n- Do NOT recall or rewrite the resume again.\n- Do NOT output anything besides the final tool call.\n\nWhen ready, respond ONLY with the tool call.\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        1024,
+        0
+      ],
+      "id": "b13cefa8-d974-4e42-b6ad-b5acd841f187",
+      "name": "Generate Cover Letter",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "0WdjwurDcBvAsuaS",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "sendTo": "michael.oyedepo@gmail.com",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "emailType": "text",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        1096,
+        224
+      ],
+      "id": "07a5ccc3-e16a-4492-88c7-d39e9291861c",
+      "name": "Send cover letter and CV",
+      "webhookId": "74e11fac-4444-4778-97da-b5ab4cbe0bf1",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "E9KZZbz3sH7T9VyO",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "### Generate CV\n\n#### This node generates a CV based on the credentials and experience from the CV template\n",
+        "height": 528,
+        "width": 256
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        208,
+        -160
+      ],
+      "typeVersion": 1,
+      "id": "1ab80283-edd3-44d4-b065-5ffe3f13aa07",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Create and update CV\n \n#### This node creates a new document and updates it with the generated CV template.\n",
+        "height": 336,
+        "width": 416,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        528,
+        -176
+      ],
+      "typeVersion": 1,
+      "id": "5a66a0a1-62c7-44a8-a852-f63bda5b1065",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Send Email\n\n#### This node sends a cover letter together with the generated CV for human review.\n\nDont forget to change the email to send to in the Gmail node.\n\n",
+        "height": 592,
+        "width": 352,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        960,
+        -224
+      ],
+      "typeVersion": 1,
+      "id": "bc853d91-71ab-45ff-8454-76c5c1feb7c5",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## AI CV Generation workflow\n\nThis workflow:\n- Takes a form response of Job title, description, requirement, and company from a Google sheet.\n\n- It uses a CV template from Goggle docs and Gemini to generate a tailored CV for the job description.\n\n- Creates a document and send it together with a generated cover letter for human review.\n\n### To use this workflow, you need:\n- to create a google OAuth client credentials if using self-hosted n8n or authenticate with your google account if using n8n cloud. \n- Your CV template containing your experience saved in Google docs\n- A Google form linked to a Sheet",
+        "height": 592,
+        "width": 288,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        -176
+      ],
+      "typeVersion": 1,
+      "id": "3dbf1d08-d159-4a67-8257-bb9e5a120f81",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Workflow built by \n### Michael Oyedepo\n\nSee how to set it up here in [Video Guide](https://youtu.be/W2fqwor0Spw)",
+        "width": 368,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        16,
+        -352
+      ],
+      "typeVersion": 1,
+      "id": "65ff0588-53d9-4d21-8acc-68516ebff1f7",
+      "name": "Sticky Note4"
+    }
+  ],
+  "pinData": {
+    "Google Sheets Trigger": [
+      {
+        "json": {
+          "Timestamp": "01/07/2025 22:25:55",
+          "Company Name": "Zolatap",
+          "Position": "Frontend Engineer",
+          "Description": "You’ll own the user‑facing side of our platform, building high‑performance, accessible\ninterfaces with React, TypeScript, and Next.js running on Vercel’s serverless edge. You’ll\ncollaborate daily with design, product, and backend teams to ship features that delight users\nand scale effortlessly.\nKey Responsibilities\n● Design, build, and maintain React/TypeScript components using Next.js App Router and\nserverless functions for edge‑rendered pages.\n● Craft polished UIs with TailwindCSS and Shadcn UI, ensuring responsive design and\naccessibility compliance.\n● Integrate Supabase Auth and REST/GQL endpoints, consuming Pydantic‑typed\nresponses for type‑safe front‑to‑back workflows.\n● Set up and monitor automated Vercel deployments linked to GitHub pull requests\n(CI/CD).\n● Collaborate with designers to translate Figma mocks into production‑ready code,\niterating based on analytics and user feedback.\n● Contribute to component libraries, design‑system tokens, and Storybook docs.\n● Champion frontend best practices: code reviews, testing (Jest/RTL/Playwright), and\nperformance profilin",
+          "Requirements": "Requirements\n● 3+ years professional experience in modern React; 1+ year with TypeScript in\nproduction.\n● Production experience with Next.js (pages or app directory) and serverless functions.\n● Deep understanding of utility‑first CSS (TailwindCSS) and component libraries (Shadcn,\nRadix).\n● Familiarity with API‑first architectures, JWT/OAuth flows, and secure client‑side\nstorage.\n● Comfortable working in a Git‑centric workflow with code reviews and CI pipelines.\n● Excellent communication skills; able to explain technical trade‑offs to cross‑functional\nteams.",
+          "Source": "Arit Dev Circle",
+          "Application Status": "Applied",
+          "Additional notes": "Apply immediately you receive the CV and cover letter."
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Generate new resume",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate new resume": {
+      "main": [
+        [
+          {
+            "node": "Create new CV Document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get CV Template": {
+      "ai_tool": [
+        [
+          {
+            "node": "Generate new resume",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create new CV Document": {
+      "main": [
+        [
+          {
+            "node": "Update CV From Model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update CV From Model": {
+      "main": [
+        [
+          {
+            "node": "Generate Cover Letter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send cover letter and CV": {
+      "ai_tool": [
+        [
+          {
+            "node": "Generate Cover Letter",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1c00e76f-da5e-4ef1-91ea-62a436d505d7",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4c690c9dac9cff8d371f973250e803e28745bc105b7fe4b93cc76304c3ed33af"
+  },
+  "id": "As7fkKBDcZuxQhxy",
+  "tags": []
+}
