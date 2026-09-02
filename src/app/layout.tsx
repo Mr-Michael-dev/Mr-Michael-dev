@@ -1,12 +1,31 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Nunito } from "next/font/google"
+import { Inter, Newsreader, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from '@vercel/analytics/next';
 
-const inter = Inter({ subsets: ["latin"] })
-const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" })
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-sans",
+  display: "swap",
+})
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "Michael Oyedepo - Software Engineer",
@@ -49,8 +68,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} ${nunito.variable}`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+      <head>
+        {/* Marks JS as available before first paint; the scroll reveal only
+            hides content when this class is present. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+      </head>
+      <body className={`${inter.variable} ${newsreader.variable} ${jetbrainsMono.variable} font-sans`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
           <Analytics />
         </ThemeProvider>

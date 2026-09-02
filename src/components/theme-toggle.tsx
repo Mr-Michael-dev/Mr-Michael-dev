@@ -3,34 +3,33 @@
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-import { Button } from "@/components/ui/button"
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
-  // Only show the toggle after mounting to avoid hydration mismatch
+  // Only render after mounting to avoid a hydration mismatch
   React.useEffect(() => {
     setMounted(true)
   }, [])
 
   if (!mounted) {
-    return null // Return null on server-side to avoid hydration mismatch
+    // Reserve the space so the header doesn't shift on hydration
+    return <span className="block h-4 w-4" aria-hidden />
   }
 
   return (
-    <Button
-      variant="outline"
-      size="icon"
+    <button
+      type="button"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="fixed top-4 right-4 z-50 rounded-full border-2 border-primary hover:bg-secondary hover:text-primary transition-all duration-300"
-      aria-label="Toggle theme"
+      className="text-muted-foreground transition-colors duration-200 hover:text-brand"
+      aria-label={resolvedTheme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
     >
       {resolvedTheme === "dark" ? (
-        <Sun className="h-[2.2rem] w-[2.2rem] text-accent" />
+        <Sun className="h-4 w-4" />
       ) : (
-        <Moon className="h-[2.2rem] w-[2.2rem] text-primary" />
+        <Moon className="h-4 w-4" />
       )}
-    </Button>
+    </button>
   )
 }

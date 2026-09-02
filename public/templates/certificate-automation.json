@@ -1,0 +1,328 @@
+{
+  "name": "Certificate generation automation",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1v8AaYE1ArP1gVbZ_F-YtycqflVun1HiEVrym_ZIxohk",
+          "mode": "list",
+          "cachedResultName": "n8n Certificate generation (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1v8AaYE1ArP1gVbZ_F-YtycqflVun1HiEVrym_ZIxohk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1646172873,
+          "mode": "list",
+          "cachedResultName": "Form Responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1v8AaYE1ArP1gVbZ_F-YtycqflVun1HiEVrym_ZIxohk/edit#gid=1646172873"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        -432,
+        48
+      ],
+      "id": "05d87160-2963-46bc-87bf-c1bc502cc2a5",
+      "name": "Google Sheets Trigger"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        16,
+        208
+      ],
+      "id": "92972bd2-6ce5-415c-a0fb-fa6d9fe0745b",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "390a32b6-0752-4f38-8401-9547f07021ad",
+              "leftValue": "={{ $json[\"whats your name?\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "7de38033-7ff3-4caa-9a93-9cd5f97b0a1a",
+              "leftValue": "={{ $json[\"Enter your email\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -192,
+        48
+      ],
+      "id": "3651afb3-6ab6-48b1-baa2-35d6a7534c15",
+      "name": "check email and name exists"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "366dbc19-c773-41c6-b9a0-a196332430d6",
+              "name": "name",
+              "value": "={{ $json[\"whats your name?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "dcabd44f-a6fb-4758-9cd7-5899c681d089",
+              "name": "email",
+              "value": "={{ $json[\"Enter your email\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "0a33d5b6-23ec-4d32-988d-6fb168710708",
+      "name": "rename form fields"
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "value": "16uk1mvSCxqKSEp3Cs1ZOuyjOywqfTkINR5BGDRfL-AU",
+          "mode": "list",
+          "cachedResultName": "n8n-cert-automation",
+          "cachedResultUrl": "https://docs.google.com/presentation/d/16uk1mvSCxqKSEp3Cs1ZOuyjOywqfTkINR5BGDRfL-AU/edit?usp=drivesdk"
+        },
+        "name": "={{ $json.name }} - certificate",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        160,
+        0
+      ],
+      "id": "36aa0706-e3f1-4cbb-903b-c348dc46e0aa",
+      "name": "Copy certificate",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "GfpSriOJIjCUvZTV",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "replaceText",
+        "presentationId": "={{ $json.id }}",
+        "textUi": {
+          "textValues": [
+            {
+              "pageObjectIds": [
+                "p"
+              ],
+              "text": "{name}",
+              "replaceText": "={{ $('rename form fields').item.json.name }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSlides",
+      "typeVersion": 2,
+      "position": [
+        320,
+        0
+      ],
+      "id": "e21aeed7-ff92-4a6b-b862-4e860c760157",
+      "name": "add name",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.presentationId }}",
+          "mode": "id"
+        },
+        "options": {
+          "googleFileConversion": {
+            "conversion": {
+              "docsToFormat": "application/pdf",
+              "drawingsToFormat": "application/pdf",
+              "slidesToFormat": "application/pdf",
+              "sheetsToFormat": "application/pdf"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        480,
+        0
+      ],
+      "id": "cc47d9bf-da98-4569-afb3-67484c46b288",
+      "name": "download certificate",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "GfpSriOJIjCUvZTV",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('rename form fields').item.json.email }}",
+        "subject": "Your Certificate",
+        "emailType": "text",
+        "message": "=Hello  {{ $('rename form fields').item.json.name }},\n\nKIndly find attached your certificate of appreciation.\n\nThank you for your contribution.\n\nBest regards,\nAutomation team.",
+        "options": {
+          "appendAttribution": false,
+          "attachmentsUi": {
+            "attachmentsBinary": [
+              {}
+            ]
+          },
+          "senderName": "Automate"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        640,
+        0
+      ],
+      "id": "1a68988f-5e68-4d6e-ad25-c50e49d7f57f",
+      "name": "Send certificate",
+      "webhookId": "7584e539-fcc9-4440-b6d9-3412f0b4b4c8",
+      "retryOnFail": true
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "check email and name exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check email and name exists": {
+      "main": [
+        [
+          {
+            "node": "rename form fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "rename form fields": {
+      "main": [
+        [
+          {
+            "node": "Copy certificate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Copy certificate": {
+      "main": [
+        [
+          {
+            "node": "add name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "add name": {
+      "main": [
+        [
+          {
+            "node": "download certificate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "download certificate": {
+      "main": [
+        [
+          {
+            "node": "Send certificate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "93c94144-b8cb-4196-a2b8-0e83e37f8881",
+  "meta": {
+    "instanceId": "4c690c9dac9cff8d371f973250e803e28745bc105b7fe4b93cc76304c3ed33af"
+  },
+  "id": "YJPHkV2rNTIki8s8",
+  "tags": []
+}

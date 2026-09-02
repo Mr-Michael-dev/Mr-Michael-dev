@@ -1,145 +1,94 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Github, Linkedin, Mail, X, Download } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
+import { useReveal } from "@/hooks/use-reveal"
+
+const stack = [
+  "TypeScript",
+  "Node.js",
+  "NestJS",
+  "Next.js",
+  "PostgreSQL",
+  "MongoDB",
+  "MySQL",
+  "Redis",
+  "n8n",
+  "Docker",
+  "GitHub Actions",
+  "Linux",
+  "Nginx",
+  "Shell",
+]
+
+const actions = [
+  { label: "Get in touch", href: "#contact" },
+  { label: "View work", href: "#work" },
+  { label: "Résumé (PDF)", href: "/Michael_Oyedepo_Resume.pdf", download: true },
+]
 
 export function HeroSection() {
-  const topSkills = [
-    "TypeScript",
-    "Node.js",
-    "Next.js",
-    "MongoDB",
-    "MySQL",
-    "Redis",
-    "n8n",
-    "Docker",
-    "GitHub Actions",
-    "Linux",
-    "Nginx",
-    "Shell scripting",
-  ]
+  const { ref, className } = useReveal<HTMLDivElement>()
 
   return (
-    <section className="relative py-20 md:min-h-screen md:flex md:items-center md:justify-center px-4 bg-gradient-brand-subtle overflow-hidden">
-      <div className="max-w-5xl w-full text-center">
-        <div className="mb-4 md:mb-8 animate-bounce-in ">
-          <Image
-            src="/michael_oyedepo.png"
-            alt="Profile"
-            width={150}
-            height={150}
-            className="rounded-full mx-auto mb-6 border-4 border-primary shadow-lg hover:shadow-2xl hover:border-accent transition-all duration-500"
-          />
-        </div>
-        <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-2 md:mb-4 text-primary animate-slide-in-left animation-delay-300">
-          Michael Oyedepo
-        </h1>
-        <p className="text-xl md:text-1xl lg:text-3xl mb-4 md:mb-6 text-accent font-semibold animate-slide-in-right animation-delay-500">
-          Software Engineer (Full Stack & Automation)
-        </p>
-        <p className="text-base md:text-lg lg:text-2xl text-foreground mb-6 md:mb-8 max-w-3xl mx-auto">
-          I help businesses build reliable web applications and automated systems that make work easier.  
-          Full-stack engineer with experience across scalable backends, clean React interfaces, and workflow automation.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4 mb-8 animate-zoom-in animation-delay-900">
-          <Button
-            asChild
-            className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-          >
-            <Link href="#contact">
-              <Mail className="w-4 h-4 mr-2" />
-              Get In Touch
-            </Link>
-          </Button>
-          <Button
-            variant="outline"
-            asChild
-            className="hover:-translate-y-1 hover:shadow-md transition-all duration-300"
-          >
-            <Link href="#projects">View Projects</Link>
-          </Button>
-          <Button
-            variant="secondary"
-            asChild
-            className="hover:-translate-y-1 hover:shadow-md transition-all duration-300"
-          >
-            <Link href="/Michael_Oyedepo_Resume.pdf" download="Michael_Oyedepo_Resume.pdf">
-              <Download className="w-4 h-4 mr-2" />
-              Download Resume
-            </Link>
-          </Button>
-        </div>
-        <div className="flex justify-center gap-4 animate-slide-up animation-delay-1100">
-          <Button
-            variant="ghost"
-            size="icon"
-            asChild
-            className="hover:bg-secondary hover:text-primary hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
-          >
-            <Link href="https://github.com/Mr-Michael-dev" target="_blank">
-              <Github className="w-5 h-5 text-primary" />
-              <span className="sr-only">GitHub</span>
-            </Link>
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            asChild
-            className="hover:bg-secondary hover:text-primary hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
-          >
-            <Link href="https://linkedin.com/in/michael-oyedepo" target="_blank">
-              <Linkedin className="w-5 h-5 text-primary" />
-              <span className="sr-only">LinkedIn</span>
-            </Link>
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            asChild
-            className="hover:bg-secondary hover:text-primary hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
-          >
-            <Link href="https://twitter.com/michealoyedepo" target="_blank">
-              <X className="w-5 h-5 text-primary" />
-              <span className="sr-only">X (formerly Twitter)</span>
-            </Link>
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            asChild
-            className="hover:bg-secondary hover:text-primary hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
-          >
-            <Link href="mailto:alex@example.com">
-              <Mail className="w-5 h-5 text-primary" />
-              <span className="sr-only">Email</span>
-            </Link>
-          </Button>
-        </div>
+    <section className="border-b border-rule">
+      <div
+        ref={ref}
+        className={`mx-auto max-w-page px-6 py-20 md:px-10 md:py-32 ${className}`}
+      >
+        <div className="grid gap-12 md:grid-cols-12 md:items-center md:gap-10">
+          <div className="md:col-span-8">
+            <p className="label">Michael Oyedepo · Software Engineer</p>
 
-        {/* Skills Section */}
-        <div className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-primary/20">
-          <p className="text-sm md:text-base text-muted-foreground mb-4">Tech Stack & Skills</p>
-          <div className="flex flex-wrap justify-center gap-2 animate-fade-in animation-delay-1300">
-            {topSkills.map((skill) => (
-              <Badge
-                key={skill}
-                variant="secondary"
-                className="hover:-translate-y-1 hover:shadow-md hover:bg-primary hover:text-white transition-all duration-300 cursor-default text-xs md:text-sm"
-              >
-                {skill}
-              </Badge>
-            ))}
+            <h1 className="text-5xl font-bold mt-7">
+              I build products and automations that take the{" "}
+              <em className="font-serif italic text-brand">busywork</em> off people’s
+              plates.
+            </h1>
+
+            <p className="mt-9 max-w-[54ch] text-muted-foreground">
+              Backend-focused engineer who also ships clean user interfaces when the job
+              needs it. I turn manual, repetitive processes into systems that hold up in
+              production.
+            </p>
+
+            <div className="mt-11 flex flex-wrap items-center gap-x-8 gap-y-4">
+              {actions.map((action) => (
+                <Link
+                  key={action.href}
+                  href={action.href}
+                  {...(action.download ? { download: true } : {})}
+                  className="link group inline-flex items-center gap-1.5 text-sm"
+                >
+                  {action.label}
+                  <ArrowUpRight className="h-3.5 w-3.5 text-brand transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="md:col-span-4">
+            <div className="relative mx-auto aspect-square w-44 overflow-hidden rounded-3xl border border-rule md:mx-0 md:ml-auto md:w-full md:max-w-[240px]">
+              <Image
+                src="/michael_oyedepo.png"
+                alt="Michael Oyedepo"
+                fill
+                priority
+                sizes="(max-width: 768px) 176px, 240px"
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Animated background shapes */}
-      <div className="absolute top-10 left-10 w-32 h-32 bg-brand-deep-blue rounded-full opacity-10 animate-spin-slow"></div>
-      <div className="absolute bottom-10 right-10 w-24 h-24 bg-brand-amber rounded-full opacity-15 animate-pulse-slow"></div>
-      <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-brand-deep-blue rounded-full opacity-10 animate-bounce-slow"></div>
+        <div className="mt-20 border-t border-rule pt-6 md:mt-28">
+          <p className="label mb-3">Stack</p>
+          <p className="font-mono text-sm leading-relaxed text-muted-foreground">
+            {stack.join("  ·  ")}
+          </p>
+        </div>
+      </div>
     </section>
   )
 }
