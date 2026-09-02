@@ -1,43 +1,38 @@
 "use client"
 
 import { useState } from "react"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
+import { ArrowLeft, ArrowRight } from "lucide-react"
+import { useReveal } from "@/hooks/use-reveal"
+
+const projects = [
+  {
+    title: "QSR Operations SOP Assistant",
+    description:
+      "The QSR management team relied on scattered PDFs, WhatsApp messages, and shared drives for SOPs and training materials, forcing store managers to escalate basic operational questions. This created delays, inconsistent compliance, and productivity loss. I built a Retrieval-Augmented Generation agent that connects approved SOPs, manuals, and policies to a conversational interface. It delivers instant, context-aware answers grounded in official documents, reducing SOP lookup time by ~80%, cutting repeated escalations, and improving operational consistency.",
+    tech: ["n8n", "AI Agent Development", "LLM Prompt Engineering", "API Integration", "Web Development"],
+    images: [
+      "/projects/qsr-sop-1.png",
+      "/projects/qsr-sop-2.png",
+      "/projects/qsr-sop-3.png",
+      "/projects/qsr-sop-4.png",
+    ],
+  },
+  {
+    title: "AI Resume & Cover Letter Generator",
+    description:
+      "Job seekers often apply to multiple roles using generic resumes and cover letters, making applications less effective. Manually tailoring CVs for each job is slow, inconsistent, and error-prone. I built an AI-powered automation that generates job-specific resumes and cover letters from a single CV template. It monitors a Google Sheet for new roles, analyzes each job with an LLM, rewrites the CV, writes a cover letter, and emails everything for review, reducing manual effort by ~90% and scaling applications reliably fast.",
+    tech: ["Google Workspace", "n8n", "Gmail", "Gemini"],
+    images: ["/projects/resume-gen-1.png", "/projects/resume-gen-2.png"],
+  },
+]
 
 export function AiAutomationSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState<Record<number, number>>({
     0: 0,
     1: 0,
   })
-
-  const projects = [
-    {
-      title: "QSR Operations SOP Assistant",
-      description:
-        "The QSR management team relied on scattered PDFs, WhatsApp messages, and shared drives for SOPs and training materials, forcing store managers to escalate basic operational questions. This created delays, inconsistent compliance, and productivity loss. I built a Retrieval-Augmented Generation agent that connects approved SOPs, manuals, and policies to a conversational interface. It delivers instant, context-aware answers grounded in official documents, reducing SOP lookup time by ~80%, cutting repeated escalations, and improving operational consistency.",
-      tech: ["n8n", "AI Agent Development", "LLM Prompt Engineering", "API Integration", "Web Development"],
-      images: [
-        "/projects/qsr-sop-1.png",
-        "/projects/qsr-sop-2.png",
-        "/projects/qsr-sop-3.png",
-        "/projects/qsr-sop-4.png",
-      ],
-    },
-    {
-      title: "AI Resume & Cover Letter Generator",
-      description:
-        "Job seekers often apply to multiple roles using generic resumes and cover letters, making applications less effective. Manually tailoring CVs for each job is slow, inconsistent, and error-prone. I built an AI-powered automation that generates job-specific resumes and cover letters from a single CV template. It monitors a Google Sheet for new roles, analyzes each job with an LLM, rewrites the CV, writes a cover letter, and emails everything for review—reducing manual effort by ~90% and scaling applications reliably fast.",
-      tech: ["Google Workspace", "n8n", "Gmail", "Gemini"],
-      images: [
-        "/projects/resume-gen-1.png",
-        "/projects/resume-gen-2.png",
-        // "/projects/resume-gen-3.png",
-        // "/projects/resume-gen-4.png",
-      ],
-    },
-  ]
+  const { ref, className } = useReveal<HTMLDivElement>()
 
   const handlePrevImage = (projectIndex: number, imageCount: number) => {
     setCurrentImageIndex((prev) => ({
@@ -54,140 +49,89 @@ export function AiAutomationSection() {
   }
 
   return (
-    <section className="py-20 px-4 bg-gradient-brand-subtle">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">
-            AI & Workflow Automation
-          </h2>
-          <p className="text-base md:text-lg text-foreground max-w-3xl">
-            Intelligent automation solutions that transform business processes, reduce manual work, and scale operations reliably.
-          </p>
+    <section id="automation" className="border-b border-rule">
+      <div
+        ref={ref}
+        className={`mx-auto max-w-page px-6 py-24 md:px-10 md:py-32 ${className}`}
+      >
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-3">
+            <p className="label md:sticky md:top-28">02 / AI &amp; Automation</p>
+          </div>
+
+          <div className="md:col-span-9">
+            <h2 className="heading max-w-[22ch]">
+              Systems that remove the manual work, not just describe it.
+            </h2>
+          </div>
         </div>
 
-        <div className="space-y-8">
+        <div className="mt-16 space-y-16 md:mt-20 md:space-y-24">
           {projects.map((project, projectIndex) => {
             const currentIndex = currentImageIndex[projectIndex] || 0
             const totalImages = project.images.length
+            const imageFirst = projectIndex % 2 === 1
 
             return (
-              <Card
-                key={projectIndex}
-                className="hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border-l-4 border-l-transparent hover:border-l-accent overflow-hidden"
+              <article
+                key={project.title}
+                className="grid gap-8 border-t border-rule pt-10 md:grid-cols-12 md:gap-10"
               >
-                {/* Image Carousel */}
-                <div className="relative bg-muted overflow-hidden h-80 md:h-96 group">
-                  <Image
-                    src={project.images[currentIndex]}
-                    alt={`${project.title} - Image ${currentIndex + 1}`}
-                    fill
-                    className="object-cover transition-opacity duration-500"
-                    priority={projectIndex === 0 && currentIndex === 0}
-                  />
-
-                  {/* Navigation Arrows (visible on hover) */}
-                  {totalImages > 1 && (
-                    <>
-                      <button
-                        onClick={() => handlePrevImage(projectIndex, totalImages)}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-                        aria-label="Previous image"
-                      >
-                        <ChevronLeft className="w-5 h-5" />
-                      </button>
-                      <button
-                        onClick={() => handleNextImage(projectIndex, totalImages)}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-                        aria-label="Next image"
-                      >
-                        <ChevronRight className="w-5 h-5" />
-                      </button>
-
-                      {/* Dot Indicators (visible on hover) */}
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                        {project.images.map((_, dotIndex) => (
-                          <button
-                            key={dotIndex}
-                            onClick={() =>
-                              setCurrentImageIndex((prev) => ({
-                                ...prev,
-                                [projectIndex]: dotIndex,
-                              }))
-                            }
-                            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                              dotIndex === currentIndex
-                                ? "bg-white w-6"
-                                : "bg-white/50 hover:bg-white/75"
-                            }`}
-                            aria-label={`Go to image ${dotIndex + 1}`}
-                          />
-                        ))}
-                      </div>
-
-                      {/* Image Counter */}
-                      <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {currentIndex + 1} / {totalImages}
-                      </div>
-                    </>
-                  )}
+                <div
+                  className={`md:col-span-5 ${imageFirst ? "md:order-2" : ""}`}
+                >
+                  <p className="label">
+                    Case {String(projectIndex + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-4 font-serif text-2xl leading-snug md:text-[1.75rem]">
+                    {project.title}
+                  </h3>
+                  <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                    {project.description}
+                  </p>
+                  <p className="mt-6 font-mono text-[0.8125rem] uppercase leading-relaxed tracking-[0.12em] text-muted-foreground">
+                    {project.tech.join(" · ")}
+                  </p>
                 </div>
 
-                {/* Content */}
-                <CardHeader>
-                  <CardTitle className="text-2xl text-primary hover:text-accent transition-all duration-300 mb-2">
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className="text-foreground text-base leading-relaxed">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-
-                {/* Tech Badges */}
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <Badge
-                        key={tech}
-                        variant="outline"
-                        className="border-brand-cool-gray text-primary hover:bg-secondary hover:text-primary hover:-translate-y-1 hover:shadow-sm transition-all duration-300"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
+                <div className={`md:col-span-7 ${imageFirst ? "md:order-1" : ""}`}>
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-sm border border-rule bg-surface">
+                    <Image
+                      src={project.images[currentIndex]}
+                      alt={`${project.title}, screen ${currentIndex + 1}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 60vw"
+                      className="object-cover"
+                    />
                   </div>
-                </CardContent>
 
-                {/* Thumbnail Grid */}
-                {totalImages > 1 && (
-                  <div className="px-6 pb-6">
-                    <div className="grid grid-cols-4 gap-2">
-                      {project.images.map((image, thumbIndex) => (
+                  {totalImages > 1 && (
+                    <div className="mt-4 flex items-center justify-between">
+                      <span className="label">
+                        {String(currentIndex + 1).padStart(2, "0")} / {String(totalImages).padStart(2, "0")}
+                      </span>
+                      <div className="flex items-center gap-5">
                         <button
-                          key={thumbIndex}
-                          onClick={() =>
-                            setCurrentImageIndex((prev) => ({
-                              ...prev,
-                              [projectIndex]: thumbIndex,
-                            }))
-                          }
-                          className={`relative h-16 rounded overflow-hidden border-2 transition-all duration-300 ${
-                            thumbIndex === currentIndex
-                              ? "border-accent shadow-md"
-                              : "border-muted hover:border-accent/50"
-                          }`}
+                          type="button"
+                          onClick={() => handlePrevImage(projectIndex, totalImages)}
+                          className="text-muted-foreground transition-colors duration-200 hover:text-brand"
+                          aria-label="Previous screenshot"
                         >
-                          <Image
-                            src={image}
-                            alt={`Thumbnail ${thumbIndex + 1}`}
-                            fill
-                            className="object-cover"
-                          />
+                          <ArrowLeft className="h-4 w-4" />
                         </button>
-                      ))}
+                        <button
+                          type="button"
+                          onClick={() => handleNextImage(projectIndex, totalImages)}
+                          className="text-muted-foreground transition-colors duration-200 hover:text-brand"
+                          aria-label="Next screenshot"
+                        >
+                          <ArrowRight className="h-4 w-4" />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                )}
-              </Card>
+                  )}
+                </div>
+              </article>
             )
           })}
         </div>

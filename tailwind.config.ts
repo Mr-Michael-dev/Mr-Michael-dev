@@ -19,12 +19,21 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", "system-ui", "-apple-system", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "Times New Roman", "serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        // Editorial tokens
+        surface: "hsl(var(--surface))",
+        rule: "hsl(var(--rule))",
+        brand: "hsl(var(--brand))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -53,21 +62,14 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Brand kit colors
-        "brand-deep-blue": "#0A2540",
-        "brand-amber": "#F6A32F",
-        "brand-light-gray": "#F5F7FA",
-        "brand-cool-gray": "#94A3B8",
-        "brand-dark-slate": "#1E293B",
       },
-      backgroundImage: {
-        "gradient-brand": "linear-gradient(135deg, #0A2540 0%, #F6A32F 100%)",
-        "gradient-brand-subtle": "linear-gradient(135deg, rgba(10, 37, 64, 0.05) 0%, rgba(246, 163, 47, 0.05) 100%)",
+      maxWidth: {
+        page: "1180px",
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 1px)",
+        sm: "calc(var(--radius) - 1px)",
       },
       keyframes: {
         "accordion-down": {

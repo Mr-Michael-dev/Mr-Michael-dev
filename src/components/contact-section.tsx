@@ -1,42 +1,52 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Mail, Linkedin } from "lucide-react"
 import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
+import { useReveal } from "@/hooks/use-reveal"
 
 export function ContactSection() {
+  const { ref, className } = useReveal<HTMLDivElement>()
+
   return (
-    <section id="contact" className="py-20 px-4 bg-brand-light-gray/50">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary">
-          Let's Work Together
-        </h2>
-        <p className="text-lg md:text-xl lg:text-2xl text-foreground mb-8 max-w-2xl mx-auto">
-          I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to
-          say hi, feel free to reach out!
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            asChild
-            className="hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
-          >
-            <Link href="mailto:michael.oyedepo@gmail.com" target="_blank">
-              <Mail className="w-4 h-4 mr-2" />
-              Send Email
+    <section id="contact">
+      <div
+        ref={ref}
+        className={`mx-auto max-w-page px-6 py-24 md:px-10 md:py-32 ${className}`}
+      >
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-3">
+            <p className="label">04 / Contact</p>
+          </div>
+
+          <div className="md:col-span-9">
+            <h2 className="heading max-w-[18ch]">
+              Have something you&apos;d like built or automated?
+            </h2>
+
+            <p className="mt-6 max-w-[54ch] text-muted-foreground">
+              I&apos;m open to new opportunities and interesting problems. The fastest way to
+              reach me is email.
+            </p>
+
+            <Link
+              href="mailto:michael.oyedepo@gmail.com"
+              className="mt-12 inline-block break-all font-serif text-[clamp(1.5rem,4.5vw,2.75rem)] leading-tight underline decoration-brand decoration-1 underline-offset-[6px] transition-colors duration-200 hover:text-brand"
+            >
+              michael.oyedepo@gmail.com
             </Link>
-          </Button>
-          <Button
-            variant="secondary"
-            size="lg"
-            asChild
-            className="hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
-          >
-            <Link href="https://linkedin.com/in/michael-oyedepo" target="_blank">
-              <Linkedin className="w-4 h-4 mr-2" />
-              Connect on LinkedIn
-            </Link>
-          </Button>
+
+            <div className="mt-12 border-t border-rule pt-6">
+              <Link
+                href="https://linkedin.com/in/michael-oyedepo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="label group inline-flex items-center gap-1.5 transition-colors duration-200 hover:!text-brand"
+              >
+                Connect on LinkedIn
+                <ArrowUpRight className="h-3 w-3 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

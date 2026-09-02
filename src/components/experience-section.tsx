@@ -1,7 +1,6 @@
 "use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Calendar } from "lucide-react"
+import { useReveal } from "@/hooks/use-reveal"
 
 export function ExperienceSection() {
   const experience = [
@@ -31,45 +30,48 @@ export function ExperienceSection() {
   ];
   
 
+  const { ref, className } = useReveal<HTMLDivElement>()
+
   return (
-    <section className="py-20 px-4 bg-brand-light-gray/50">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 text-center text-primary">
-          Experience
-        </h2>
-        <div className="space-y-8">
-          {experience.map((job, index) => (
-            <Card
-              key={index}
-              className="hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border-l-4 border-l-transparent hover:border-l-accent"
-            >
-              <CardHeader>
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <CardTitle className="text-xl text-primary hover:text-accent transition-all duration-300">
+    <section id="experience" className="border-b border-rule">
+      <div
+        ref={ref}
+        className={`mx-auto max-w-page px-6 py-24 md:px-10 md:py-32 ${className}`}
+      >
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-3">
+            <p className="label md:sticky md:top-28">Experience</p>
+          </div>
+
+          <div className="md:col-span-9">
+            <ol>
+              {experience.map((job) => (
+                <li
+                  key={job.company}
+                  className="grid gap-4 border-t border-rule py-10 last:border-b md:grid-cols-12 md:gap-6"
+                >
+                  <div className="md:col-span-4">
+                    <p className="label">{job.period}</p>
+                    <h3 className="mt-3 font-serif text-xl leading-snug md:text-2xl">
                       {job.title}
-                    </CardTitle>
-                    <CardDescription className="text-lg lg:text-4xl font-medium text-accent">
-                      {job.company}
-                    </CardDescription>
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground">{job.company}</p>
                   </div>
-                  <div className="flex items-center gap-2 text-muted-foreground mt-2 md:mt-0">
-                    <Calendar className="w-4 h-4 text-accent" />
-                    <span>{job.period}</span>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="list-disc pl-4 space-y-2">
-                  {job.description.map((item, i) => (
-                    <li key={i} className="text-foreground">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          ))}
+
+                  <ul className="space-y-3 md:col-span-8">
+                    {job.description.map((item) => (
+                      <li
+                        key={item}
+                        className="max-w-[62ch] border-l border-rule pl-4 text-sm leading-relaxed text-muted-foreground"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </div>
     </section>
