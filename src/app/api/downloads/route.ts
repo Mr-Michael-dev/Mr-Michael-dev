@@ -1,13 +1,29 @@
 import { Redis } from "@upstash/redis"
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 
 const redis = Redis.fromEnv();
 
-const DOWNLOAD_KEY = "resume-automation-downloads"
+const DOWNLOAD_KEYS: Record<string, string> = {
+  "resume-automation": "resume-automation-downloads",
+  "certificate-automation": "certificate-automation-downloads",
+}
 
-export async function GET() {
+const DEFAULT_TEMPLATE = "resume-automation"
+
+function getDownloadKey(request: NextRequest) {
+  const template = request.nextUrl.searchParams.get("template") || DEFAULT_TEMPLATE
+  return DOWNLOAD_KEYS[template]
+}
+
+export async function GET(request: NextRequest) {
+  const key = getDownloadKey(request)
+
+  if (!key) {
+    return NextResponse.json({ error: "Unknown template" }, { status: 400 })
+  }
+
   try {
-    const count = await redis.get<number>(DOWNLOAD_KEY)
+    const count = await redis.get<number>(key)
     return NextResponse.json({ 
       count: count || 0,
       lastUpdated: new Date().toISOString()
@@ -18,13 +34,16 @@ export async function GET() {
   }
 }
 
-export async function POST() {
+export async function POST(request: NextRequest) {
+  const key = getDownloadKey(request)
+
+  if (!key) {
+    return NextResponse.json({ error: "Unknown template" }, { status: 400 })
+  }
+
   try {
-    const currentCount = await redis.get<number>(DOWNLOAD_KEY)
-    const newCount = (currentCount || 0) + 1
-    
-    await redis.set(DOWNLOAD_KEY, newCount)
-    
+    const newCount = await redis.incr(key)
+
     return NextResponse.json({ 
       success: true, 
       count: newCount 
